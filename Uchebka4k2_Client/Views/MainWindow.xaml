@@ -4,12 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Uchebka4k2_Client"
+        xmlns:viewmodels="clr-namespace:Uchebka4k2_Client.ViewModels"
+        xmlns:views="clr-namespace:Uchebka4k2_Client.Views"
         mc:Ignorable="d"
         Title="Auto Service" 
-        MinHeight="500" 
-        MinWidth="800"
+        MinHeight="800" 
+        MinWidth="1200"
         WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:ClientsViewModel}">
+            <views:ClientsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ClientSheetViewModel}">
+            <views:ClientSheet/>
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid>
-        
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

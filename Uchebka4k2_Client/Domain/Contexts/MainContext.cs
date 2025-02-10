@@ -10,14 +10,14 @@ namespace Uchebka4k2_Client.Domain.Contexts
 
         public ViewModel ViewModel => _history.Peek();
 
-        public event Action OnViewModelChanged;
+        public event Action ViewModelChanged;
 
         public void Pop()
         {
             if (_history.Count > 0)
             {
                 _history.Pop();
-                OnViewModelChanged?.Invoke();
+                ViewModelChanged?.Invoke();
             }
         }
 
@@ -29,7 +29,7 @@ namespace Uchebka4k2_Client.Domain.Contexts
             }
 
             _history.Push(viewModel);
-            OnViewModelChanged?.Invoke();
+            ViewModelChanged?.Invoke();
         }
 
         public void PopAndPush(ViewModel viewModel)
@@ -49,7 +49,7 @@ namespace Uchebka4k2_Client.Domain.Contexts
             }
 
             _history.Push(viewModel);
-            OnViewModelChanged?.Invoke();
+            ViewModelChanged?.Invoke();
         }
     }
 }

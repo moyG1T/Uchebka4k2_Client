@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -45,10 +51,13 @@
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.1\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -70,13 +79,75 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\Models\ClientsViewModel.cs" />
+    <Compile Include="Data\Models\AutoServiceModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoServiceModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\AutoServiceModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\AutoServiceModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoServiceModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Client.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\ClientService.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\DocumentByService.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Gender.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Manufacturer.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Product.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\ProductPhoto.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\ProductSale.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Service.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\ServicePhoto.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\sysdiagram.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Models\Tag.cs">
+      <DependentUpon>AutoServiceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Commands\BackCommand.cs" />
+    <Compile Include="Domain\Commands\GoCommand.cs" />
+    <Compile Include="ViewModels\ClientSheetViewModel.cs" />
+    <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="Domain\Commands\RelayCommand.cs" />
     <Compile Include="Domain\Contexts\MainContext.cs" />
     <Compile Include="Domain\IServices\INavService.cs" />
     <Compile Include="Domain\Services\MainNavService.cs" />
     <Compile Include="Domain\Utils\ViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Page Include="Views\ClientSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClientsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +157,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Injection\App.cs" />
+    <Compile Include="Views\ClientSheet.xaml.cs">
+      <DependentUpon>ClientSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClientsView.xaml.cs">
+      <DependentUpon>ClientsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,6 +186,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Data\Models\AutoServiceModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoServiceModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\Models\AutoServiceModel.edmx.diagram">
+      <DependentUpon>AutoServiceModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -119,5 +203,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\Models\AutoServiceModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AutoServiceModel.Context.cs</LastGenOutput>
+      <DependentUpon>AutoServiceModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\Models\AutoServiceModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoServiceModel.edmx</DependentUpon>
+      <LastGenOutput>AutoServiceModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
