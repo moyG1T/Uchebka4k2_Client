@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Uchebka4k2_Client.Views"
+             xmlns:local="clr-namespace:Uchebka4k2_Client.Views" xmlns:viewmodels="clr-namespace:Uchebka4k2_Client.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ClientSheetViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -47,12 +47,13 @@
                                    Height="200"
                                    Width="200">
                             <Rectangle.Fill>
-                                <ImageBrush/>
+                                <ImageBrush ImageSource="{Binding Client.PhotoBin}" Stretch="UniformToFill"/>
                             </Rectangle.Fill>
                         </Rectangle>
                     </Grid>
 
                     <Button Content="Выбрать фото" 
+                            Command="{Binding PickImageCommand}"
                             HorizontalAlignment="Center" 
                             Style="{StaticResource ElevatedButton}"/>
                 </StackPanel>
@@ -60,31 +61,33 @@
                 <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5 0" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="Фамилия" Margin="5 0"/>
-                        <TextBox/>
+                        <TextBox Text="{Binding Client.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="Имя" Margin="5 0"/>
-                        <TextBox/>
+                        <TextBox Text="{Binding Client.LastName, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="Отчество" Margin="5 0"/>
-                        <TextBox/>
+                        <TextBox Text="{Binding Client.Patronymic, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="День рождения" Margin="5 0"/>
-                        <DatePicker/>
+                        <DatePicker SelectedDate="{Binding Client.Birthday, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="Почта" Margin="5 0"/>
-                        <TextBox/>
+                        <TextBox Text="{Binding Client.Email, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="Телефон" Margin="5 0"/>
-                        <TextBox/>
+                        <TextBox Text="{Binding Client.Phone, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 5" HorizontalAlignment="Right">
                         <TextBlock Text="Пол" Margin="5 0"/>
-                        <ComboBox/>
+                        <ComboBox SelectedItem="{Binding SelectedGender}"
+                                  ItemsSource="{Binding Genders}"
+                                  DisplayMemberPath="Name"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -92,6 +95,7 @@
 
         <Button Content="Сохранить" 
                 Grid.Row="2"
+                Command="{Binding SaveChangesCommand}"
                 Style="{StaticResource ElevatedButton}"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Center" 

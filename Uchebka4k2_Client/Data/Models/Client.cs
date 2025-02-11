@@ -22,16 +22,8 @@ namespace Uchebka4k2_Client.Data.Models
         }
     
         public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Patronymic { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public System.DateTime RegistrationDate { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
         public string GenderCode { get; set; }
         public string PhotoPath { get; set; }
-        public byte[] PhotoBin { get; set; }
         public bool IsDeleted { get; set; }
     
         public virtual Gender Gender { get; set; }

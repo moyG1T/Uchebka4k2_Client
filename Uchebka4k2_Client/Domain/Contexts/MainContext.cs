@@ -16,7 +16,8 @@ namespace Uchebka4k2_Client.Domain.Contexts
         {
             if (_history.Count > 0)
             {
-                _history.Pop();
+                var viewModel = _history.Pop();
+                viewModel.Dispose();
                 ViewModelChanged?.Invoke();
             }
         }

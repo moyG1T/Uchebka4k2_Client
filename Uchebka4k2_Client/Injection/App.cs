@@ -17,6 +17,7 @@ namespace Uchebka4k2_Client
 
             services.AddSingleton<AutoServiceEntities>();
             services.AddSingleton<MainContext>();
+            services.AddSingleton<ClientContext>();
 
             services.AddSingleton(MainWindowFactory);
             services.AddSingleton(MainViewModelFactory);
@@ -40,11 +41,19 @@ namespace Uchebka4k2_Client
         }
         private ClientsViewModel ClientsViewModelFactory(IServiceProvider p)
         {
-            return new ClientsViewModel(ClientSheetMainNavService(p), p.GetRequiredService<AutoServiceEntities>());
+            return new ClientsViewModel(
+                ClientSheetMainNavService(p),
+                p.GetRequiredService<ClientContext>(),
+                p.GetRequiredService<AutoServiceEntities>()
+                );
         }
         private ClientSheetViewModel ClientSheetViewModelFactory(IServiceProvider p)
         {
-            return new ClientSheetViewModel(BackOnlyMainNavService(p), p.GetRequiredService<AutoServiceEntities>());
+            return new ClientSheetViewModel(
+                BackOnlyMainNavService(p), 
+                p.GetRequiredService<ClientContext>(), 
+                p.GetRequiredService<AutoServiceEntities>()
+                );
         }
 
         private MainNavService BackOnlyMainNavService(IServiceProvider p)
@@ -53,11 +62,11 @@ namespace Uchebka4k2_Client
         }
         private MainNavService ClientsMainNavService(IServiceProvider p)
         {
-            return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ClientsViewModel>());
+            return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ClientsViewModel>);
         }
         private MainNavService ClientSheetMainNavService(IServiceProvider p)
         {
-            return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ClientSheetViewModel>());
+            return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ClientSheetViewModel>);
         }
     }
 }

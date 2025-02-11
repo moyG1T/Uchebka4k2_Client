@@ -33,7 +33,7 @@
                                            StrokeThickness="1"
                                            Stroke="{StaticResource Orange}">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="{Binding}" Stretch="UniformToFill"/>
+                            <ImageBrush ImageSource="{Binding PhotoBin}" Stretch="UniformToFill"/>
                         </Rectangle.Fill>
                     </Rectangle>
 
@@ -109,7 +109,14 @@
 
         <Grid Grid.Row="2">
             <Border Background="{StaticResource Orange}"/>
-
+            <Button Content="Новый сотрудник" 
+                    Command="{Binding CreateClientCommand}"
+                    Style="{StaticResource ElevatedButton}" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="10 0"
+                    Background="{StaticResource Cream}"
+                    Foreground="Black"/>
         </Grid>
     </Grid>
 </UserControl>

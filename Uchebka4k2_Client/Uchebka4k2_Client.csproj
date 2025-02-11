@@ -130,8 +130,10 @@
     <Compile Include="Data\Models\Tag.cs">
       <DependentUpon>AutoServiceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ObservableModels\Client.cs" />
     <Compile Include="Domain\Commands\BackCommand.cs" />
     <Compile Include="Domain\Commands\GoCommand.cs" />
+    <Compile Include="Domain\Contexts\ClientContext.cs" />
     <Compile Include="ViewModels\ClientSheetViewModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="Domain\Commands\RelayCommand.cs" />
