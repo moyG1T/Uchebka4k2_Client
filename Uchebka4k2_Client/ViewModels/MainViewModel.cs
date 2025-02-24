@@ -9,7 +9,6 @@ namespace Uchebka4k2_Client.ViewModels
     public class MainViewModel : ViewModel
     {
         private readonly MainContext _mainContext;
-        private MainNavService mainNavService;
 
         public ViewModel CurrentViewModel => _mainContext.ViewModel;
 

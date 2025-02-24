@@ -10,11 +10,13 @@ namespace Uchebka4k2_Client.ViewModels
     {
         public ICommand PushClientsCommand { get; }
         public ICommand PushServicesCommand { get; }
+        public ICommand PushClientServicesCommand { get; }
 
-        public NavMenuViewModel(INavService clients, INavService services)
+        public NavMenuViewModel(INavService clients, INavService services, INavService clientServices)
         {
             PushClientsCommand = new GoCommand(clients);
             PushServicesCommand = new GoCommand(services);
+            PushClientServicesCommand = new GoCommand(clientServices);
         }
 
         public override void Dispose()

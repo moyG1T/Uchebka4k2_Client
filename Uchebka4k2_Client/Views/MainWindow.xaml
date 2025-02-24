@@ -28,6 +28,12 @@
         <DataTemplate DataType="{x:Type viewmodels:ServiceSheetViewModel}">
             <views:ServiceSheet/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ClientServicesViewModel}">
+            <views:ClientServicesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ClientServiceSheetViewModel}">
+            <views:ClientServiceSheet/>
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>

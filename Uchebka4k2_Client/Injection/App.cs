@@ -19,6 +19,7 @@ namespace Uchebka4k2_Client
             services.AddSingleton<MainContext>();
             services.AddSingleton<ClientContext>();
             services.AddSingleton<ServiceContext>();
+            services.AddSingleton<ClientServicesContext>();
 
             services.AddSingleton(MainWindowFactory);
             services.AddSingleton(MainViewModelFactory);
@@ -30,6 +31,9 @@ namespace Uchebka4k2_Client
 
             services.AddTransient(ServicesViewModelFactory);
             services.AddTransient(ServiceSheetViewModelFactory);
+
+            services.AddTransient(ClientServicesViewModelFactory);
+            services.AddTransient(ClientServiceSheetViewModelFactory);
 
             _provider = services.BuildServiceProvider();
         }
@@ -47,7 +51,7 @@ namespace Uchebka4k2_Client
         }
         private NavMenuViewModel NavMenuViewModelFactory(IServiceProvider p)
         {
-            return new NavMenuViewModel(ClientsMainNavService(p), ServicesMainNavService(p));
+            return new NavMenuViewModel(ClientsMainNavService(p), ServicesMainNavService(p), ClientServicesFactoryMainNavService(p));
         }
         private ClientsViewModel ClientsViewModelFactory(IServiceProvider p)
         {
@@ -81,6 +85,22 @@ namespace Uchebka4k2_Client
                 p.GetRequiredService<AutoServiceEntities>()
                 );
         }
+        private ClientServicesViewModel ClientServicesViewModelFactory(IServiceProvider p)
+        {
+            return new ClientServicesViewModel(
+                ClientServiceSheetFactoryMainNavService(p),
+                p.GetRequiredService<ClientServicesContext>(),
+                p.GetRequiredService<AutoServiceEntities>()
+                );
+        }
+        private ClientServiceSheetViewModel ClientServiceSheetViewModelFactory(IServiceProvider p)
+        {
+            return new ClientServiceSheetViewModel(
+                BackOnlyMainNavService(p),
+                p.GetRequiredService<ClientServicesContext>(),
+                p.GetRequiredService<AutoServiceEntities>()
+                );
+        }
 
         private MainNavService BackOnlyMainNavService(IServiceProvider p)
         {
@@ -105,6 +125,14 @@ namespace Uchebka4k2_Client
         private MainNavService ServiceSheetMainNavService(IServiceProvider p)
         {
             return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ServiceSheetViewModel>);
+        }
+        private MainNavService ClientServicesFactoryMainNavService(IServiceProvider p)
+        {
+            return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ClientServicesViewModel>);
+        }
+        private MainNavService ClientServiceSheetFactoryMainNavService(IServiceProvider p)
+        {
+            return new MainNavService(p.GetRequiredService<MainContext>(), p.GetRequiredService<ClientServiceSheetViewModel>);
         }
     }
 }

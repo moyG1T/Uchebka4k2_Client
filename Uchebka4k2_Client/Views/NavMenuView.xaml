@@ -33,6 +33,14 @@
                     Margin="10 0"
                     Background="{StaticResource Orange}"
                     Foreground="White"/>
+            <Button Content="Услуги клиентов" 
+                    Command="{Binding PushClientServicesCommand}"
+                    Style="{StaticResource ElevatedButton}" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="10 0"
+                    Background="{StaticResource Orange}"
+                    Foreground="White"/>
         </StackPanel>
     </Grid>
 </UserControl>
