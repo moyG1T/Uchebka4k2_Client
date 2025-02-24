@@ -17,6 +17,7 @@ namespace Uchebka4k2_Client.ViewModels
         private readonly AutoServiceEntities _db;
         public ObservableCollection<Client> Clients { get; set; }
 
+        public ICommand GoBackCommand { get; }
         public ICommand EditClientCommand { get; }
         public ICommand RemoveClientCommand { get; }
         public ICommand CreateClientCommand { get; }
@@ -31,6 +32,7 @@ namespace Uchebka4k2_Client.ViewModels
 
             RemoveClientCommand = new RelayCommand(RemoveClient);
             EditClientCommand = new RelayCommand(PushClient);
+            GoBackCommand = new BackCommand(clientSheet);
             CreateClientCommand = new GoCommand(clientSheet);
 
             _clientContext.ClientAdded += OnClientAdded;

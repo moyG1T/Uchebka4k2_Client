@@ -104,6 +104,8 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Discount" Type="float" />
           <Property Name="MainImagePath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MainImageBin" Type="varbinary(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ServicePhoto">
           <Key>
@@ -534,6 +536,8 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Discount" Type="Double" />
           <Property Name="MainImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MainImageBin" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ClientServices" Relationship="AutoServiceEntitiesModel.FK_ClientService_Service" FromRole="Service" ToRole="ClientService" />
           <NavigationProperty Name="ServicePhotoes" Relationship="AutoServiceEntitiesModel.FK_ServicePhoto_Service" FromRole="Service" ToRole="ServicePhoto" />
         </EntityType>
@@ -681,7 +685,7 @@
           <End Type="AutoServiceEntitiesModel.Client" Role="Client" Multiplicity="*" />
           <End Type="AutoServiceEntitiesModel.Tag" Role="Tag" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -778,6 +782,8 @@
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="AutoServiceEntitiesModel.Service">
               <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MainImageBin" ColumnName="MainImageBin" />
                 <ScalarProperty Name="MainImagePath" ColumnName="MainImagePath" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

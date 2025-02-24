@@ -13,11 +13,20 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:NavMenuViewModel}">
+            <views:NavMenuView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:ClientsViewModel}">
             <views:ClientsView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:ClientSheetViewModel}">
             <views:ClientSheet/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ServicesViewModel}">
+            <views:ServicesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ServiceSheetViewModel}">
+            <views:ServiceSheet/>
         </DataTemplate>
     </Window.Resources>
     

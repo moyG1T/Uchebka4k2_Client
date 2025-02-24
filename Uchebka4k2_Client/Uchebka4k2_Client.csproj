@@ -131,9 +131,11 @@
       <DependentUpon>AutoServiceModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ObservableModels\Client.cs" />
+    <Compile Include="Data\ObservableModels\Service.cs" />
     <Compile Include="Domain\Commands\BackCommand.cs" />
     <Compile Include="Domain\Commands\GoCommand.cs" />
     <Compile Include="Domain\Contexts\ClientContext.cs" />
+    <Compile Include="Domain\Contexts\ServiceContext.cs" />
     <Compile Include="ViewModels\ClientSheetViewModel.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="Domain\Commands\RelayCommand.cs" />
@@ -142,6 +144,18 @@
     <Compile Include="Domain\Services\MainNavService.cs" />
     <Compile Include="Domain\Utils\ViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NavMenuViewModel.cs" />
+    <Compile Include="ViewModels\ServiceSheetViewModel.cs" />
+    <Compile Include="ViewModels\ServicesViewModel.cs" />
+    <Compile Include="Views\NavMenuView.xaml.cs">
+      <DependentUpon>NavMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiceSheet.xaml.cs">
+      <DependentUpon>ServiceSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServicesView.xaml.cs">
+      <DependentUpon>ServicesView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\ClientSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,6 +183,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\NavMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServiceSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
