@@ -7,9 +7,10 @@
         xmlns:viewmodels="clr-namespace:Uchebka4k2_Client.ViewModels"
         xmlns:views="clr-namespace:Uchebka4k2_Client.Views"
         mc:Ignorable="d"
-        Title="Auto Service" 
-        MinHeight="800" 
-        MinWidth="1200"
+        Icon="/Assets/Images/service_logo.ico"
+        Title="Поломка" 
+        Height="800" 
+        Width="1200"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -38,5 +39,12 @@
     
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>
+        
+        <Rectangle Height="60" Width="60" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Assets/Images/service_logo.ico" Stretch="UniformToFill"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        
     </Grid>
 </Window>
